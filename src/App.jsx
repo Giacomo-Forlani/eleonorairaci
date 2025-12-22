@@ -1,8 +1,6 @@
 import { NavLink, Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage.jsx'
-import AboutPage from './pages/AboutPage.jsx'
 import ProjectsPage from './pages/ProjectsPage.jsx'
-import ContactPage from './pages/ContactPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 
 function App() {
@@ -24,14 +22,8 @@ function App() {
             <NavLink to="/" end className={navLinkClass}>
               Home
             </NavLink>
-            <NavLink to="/about" className={navLinkClass}>
-              About
-            </NavLink>
             <NavLink to="/projects" className={navLinkClass}>
               Projects
-            </NavLink>
-            <NavLink to="/contact" className={navLinkClass}>
-              Contact
             </NavLink>
           </nav>
         </div>
@@ -39,9 +31,7 @@ function App() {
       <main className="mx-auto w-full max-w-5xl px-6 py-10">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
