@@ -201,6 +201,7 @@ Il target non influisce direttamente sull’implementazione tecnica, ma guida tu
 
 Nota: i file `.env` e `.env.local` non si committano; usa i `.env.example` per condividere i valori base.
 Nota: la config ESLint in `apps/web` estende solo `next/core-web-vitals` per compatibilita build su Vercel.
+Nota: l'helper immagini Sanity usa il tipo inferito dal builder per compatibilita tra versioni.
 
 ## Script principali
 
