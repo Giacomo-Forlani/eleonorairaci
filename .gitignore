@@ -1,0 +1,43 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build outputs
+.next/
+out/
+dist/
+*.tsbuildinfo
+
+# sanity
+.sanity/
+
+# tooling
+.turbo/
+.cache/
+.eslintcache
+
+# vercel
+.vercel/
+
+# env files
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# coverage
+coverage/
+.nyc_output/
+
+# OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
