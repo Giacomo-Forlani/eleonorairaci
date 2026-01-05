@@ -199,7 +199,8 @@ Il target non influisce direttamente sull’implementazione tecnica, ma guida tu
 3. `cp apps/studio/.env.example apps/studio/.env`
 4. `pnpm dev` (frontend) e `pnpm studio:dev` (CMS)
 
-Nota: i file `.env` e `.env.local` sono esclusi da git; usa i `.env.example` per condividere i valori base.
+Nota: i file `.env` e `.env.local` non si committano; usa i `.env.example` per condividere i valori base.
+Nota: la config ESLint in `apps/web` estende solo `next/core-web-vitals` per compatibilita build su Vercel.
 
 ## Script principali
 
