@@ -202,6 +202,14 @@ Il target non influisce direttamente sull’implementazione tecnica, ma guida tu
 Nota: i file `.env` e `.env.local` non si committano; usa i `.env.example` per condividere i valori base.
 Nota: la config ESLint in `apps/web` estende solo `next/core-web-vitals` per compatibilita build su Vercel.
 Nota: l'helper immagini Sanity usa il tipo inferito dal builder per compatibilita tra versioni.
+Nota: se nel webhook Sanity puoi scegliere solo `v2021-03-25` o `v2025-02-19`, usa `v2025-02-19` e allinea lo stesso valore nelle env.
+
+## Deploy Studio (Sanity)
+
+1. `pnpm --filter @portfolio/studio exec sanity login`
+2. `pnpm --filter @portfolio/studio exec sanity deploy --hostname eleonorairaci`
+
+Nota: il valore `studioHost` e' definito in `apps/studio/sanity.cli.ts` per evitare prompt al deploy.
 
 ## Script principali
 
