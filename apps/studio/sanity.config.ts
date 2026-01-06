@@ -25,7 +25,7 @@ export default defineConfig({
   document: {
     newDocumentOptions: (prev, { creationContext }) =>
       creationContext.type === 'global'
-        ? prev.filter((option) => !singletonTypes.has(option.schemaType))
+        ? prev.filter((option) => !singletonTypes.has(option.templateId))
         : prev,
     actions: (prev, context) =>
       singletonTypes.has(context.schemaType)

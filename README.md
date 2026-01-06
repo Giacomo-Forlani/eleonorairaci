@@ -1,43 +1,24 @@
-# Portfolio di Architettura — Next.js + Sanity + Vercel
+# Portfolio di Architettura — Next.js + Sanity
 
-Questo repository contiene il codice di un **portfolio accademico/professionale di architettura** basato su **Next.js** come frontend e **Sanity** come CMS headless, con deploy su **Vercel**.  
+Repository di un **portfolio accademico/professionale di architettura** basato su **Next.js** (frontend) e **Sanity** (CMS headless), con deploy su **Vercel**.
 
-Il progetto è pensato per offrire:
-- forte controllo editoriale (narrazione dei progetti),
-- gestione completa dei contenuti da CMS,
-- performance elevate,
-- struttura scalabile e professionale.
-
-Le scelte architetturali e funzionali adottate sono elencate e motivate di seguito.
+Obiettivi principali:
+- controllo editoriale sulla narrazione dei progetti
+- gestione completa dei contenuti via CMS
+- performance elevate
+- struttura scalabile e professionale
 
 ## Stack tecnologico
 
-- **Frontend:** Next.js (App Router) + TypeScript  
-- **CMS:** Sanity Studio v3 (Content Lake + Studio)  
-- **Styling:** Tailwind CSS + CSS Variables  
-- **Hosting frontend:** Vercel  
-- **Hosting CMS:** Sanity.io  
-- **Immagini:** Sanity Image Pipeline  
+- **Frontend:** Next.js (App Router) + TypeScript
+- **CMS:** Sanity Studio v3 (Content Lake + Studio)
+- **Styling:** Tailwind CSS + CSS Variables
+- **Hosting frontend:** Vercel
+- **Hosting CMS:** Sanity.io
+- **Immagini:** Sanity Image Pipeline
 - **Email form:** Endpoint Next.js + servizio email (es. Resend)
 
-## 1. Architettura del progetto  
-
-Struttura del repository:
-
-```
-
-apps/
-├─ web/        → Frontend Next.js (deploy su Vercel)
-└─ studio/     → Sanity Studio (CMS admin)
-
-```
-
-**Motivazione**
-- Separazione chiara tra presentazione (frontend) e gestione contenuti (CMS).
-- Struttura professionale e scalabile.
-- Facilita manutenzione, deploy e possibili estensioni future.
-
-Struttura del progetto (dettaglio):
+## Struttura repository
 
 ```
 .
@@ -55,142 +36,14 @@ Struttura del progetto (dettaglio):
 └─ README.md
 ```
 
+## Linee guida di sviluppo
 
-## 2. Hosting Sanity Studio  
+- Regole e coerenza del progetto in `AGENTS.md`.
 
-Il CMS admin è hostato direttamente sull’infrastruttura Sanity.
+## Requisiti
 
-**Motivazione**
-- Nessuna manutenzione server.
-- Stabilità e aggiornamenti automatici.
-- Riduzione della complessità del progetto frontend.
-- Best practice per progetti editoriali e portfolio.
-
-## 3. Gestione dei contenuti dinamici  
-
-Le pagine uniche del sito sono gestite come documenti singleton:
-- `siteSettings`
-- `homePage`
-- `aboutPage`
-- `cvPage`
-
-**Motivazione**
-- Chiarezza per l’admin: una pagina = un documento.
-- Nessun rischio di duplicazione.
-- Ideale per Home, About, CV e impostazioni globali.
-
-## 4. Contenuti modulari (blocchi)  
-
-I contenuti delle pagine (Home, About, Progetti) sono costruiti tramite **campi strutturati e ripetibili**, ma non tramite un page-builder libero.
-
-Esempi:
-- galleria immagini
-- testo descrittivo
-- sezioni predefinite
-- metadati chiari
-
-**Motivazione**
-- Maggiore controllo sul layout e sulla coerenza visiva.
-- Implementazione frontend più semplice e robusta.
-- Riduzione del rischio di impaginazioni incoerenti da parte dell’admin.
-
-## 5. Gestione Home – Progetti in evidenza  
-
-La Home permette di selezionare manualmente i progetti in evidenza.
-
-Campi principali:
-- Hero image / gif
-- Breve descrizione personale
-- Lista di progetti selezionati (reference a `project`)
-
-**Motivazione**
-- Controllo curatoriale totale.
-- La Home racconta una storia precisa e intenzionale.
-- Approccio ideale per un portfolio accademico.
-
-## 6. Filtri Portfolio  
-
-I filtri (Tag, Skills, Tipologia) sono applicati lato client.
-
-**Motivazione**
-- Esperienza utente immediata e fluida.
-- Dataset limitato (portfolio personale).
-- Implementazione più semplice rispetto a query server dinamiche.
-
-## 7. Progetti correlati  
-
-I progetti correlati sono calcolati automaticamente in base a:
-- tag condivisi
-- skills condivise
-
-**Motivazione**
-- Relazioni semantiche corrette.
-- Nessuna manutenzione manuale.
-- Il sistema migliora automaticamente con l’aumentare dei contenuti.
-
-## 8. Gestione colori e font da CMS  
-
-Colori e font sono definiti nel documento `siteSettings` e convertiti in CSS variables.
-
-Esempi:
-- `--color-background`
-- `--color-text`
-- `--color-primary`
-- `--font-heading`
-- `--font-body`
-
-**Motivazione**
-- L’admin può modificare l’identità visiva senza toccare il codice.
-- Design system coerente.
-- Nessun redeploy necessario per modifiche cromatiche o tipografiche.
-
-## 9. Pubblicazione contenuti  
-
-Si utilizza il sistema di draft/publish nativo di Sanity:
-- i contenuti non pubblicati non sono visibili al pubblico
-- possibilità di preview nel frontend
-
-**Motivazione**
-- Workflow editoriale professionale.
-- Possibilità di verificare i contenuti prima della pubblicazione.
-- Approccio standard per CMS headless moderni.
-
-## 10. Aggiornamento contenuti (ISR)  
-
-Quando un contenuto viene pubblicato o aggiornato:
-- Sanity invia un webhook a Next.js
-- Next.js invalida le pagine interessate (ISR)
-
-**Motivazione**
-- Performance elevate (static generation).
-- Aggiornamenti quasi immediati.
-- Nessun rebuild completo del sito.
-
-## 11. Form di contatto  
-
-Il form di contatto utilizza:
-- una API route in Next.js (`/api/contact`)
-- un servizio email (es. Resend)
-
-Campi:
-- Nome
-- Email
-- Messaggio
-
-**Motivazione**
-- Controllo totale su logica e sicurezza.
-- Nessun servizio esterno visibile.
-- Possibilità di leggere destinatari e testi dal CMS.
-
-## 12. Target del progetto  
-
-Il progetto è pensato per:
-- studenti di architettura
-- presentazioni accademiche
-- portfolio per studi, concorsi, Erasmus, laurea
-
-**Nota**
-Il target non influisce direttamente sull’implementazione tecnica, ma guida tutte le scelte editoriali e strutturali.
+- Node.js (LTS)
+- pnpm
 
 ## Setup rapido
 
@@ -199,21 +52,9 @@ Il target non influisce direttamente sull’implementazione tecnica, ma guida tu
 3. `cp apps/studio/.env.example apps/studio/.env`
 4. `pnpm dev` (frontend) e `pnpm studio:dev` (CMS)
 
-Nota: nel file `apps/studio/.env` valorizza anche `SANITY_STUDIO_PROJECT_ID` e
+Nota: in `apps/studio/.env` valorizza anche `SANITY_STUDIO_PROJECT_ID` e
 `SANITY_STUDIO_DATASET` (prefisso richiesto per esporre le variabili al build
 dello Studio).
-
-Nota: i file `.env` e `.env.local` non si committano; usa i `.env.example` per condividere i valori base.
-Nota: la config ESLint in `apps/web` estende solo `next/core-web-vitals` per compatibilita build su Vercel.
-Nota: l'helper immagini Sanity usa il tipo inferito dal builder per compatibilita tra versioni.
-Nota: se nel webhook Sanity puoi scegliere solo `v2021-03-25` o `v2025-02-19`, usa `v2025-02-19` e allinea lo stesso valore nelle env.
-
-## Deploy Studio (Sanity)
-
-1. `pnpm --filter @portfolio/studio exec sanity login`
-2. `pnpm --filter @portfolio/studio exec sanity deploy --hostname eleonorairaci`
-
-Nota: il valore `studioHost` e' definito in `apps/studio/sanity.cli.ts` per evitare prompt al deploy.
 
 ## Script principali
 
@@ -238,3 +79,38 @@ Studio (`apps/studio/.env`):
 - `SANITY_DATASET`
 - `SANITY_STUDIO_DATASET` (uguale a `SANITY_DATASET`)
 - `SANITY_API_VERSION`
+
+Nota: i file `.env` e `.env.local` non si committano; usa i `.env.example` per condividere i valori base.
+
+## Architettura contenuti (Sanity)
+
+- **Singleton:** `siteSettings`, `homePage`, `aboutPage`, `cvPage`
+- **Contenuti modulari:** blocchi strutturati e ripetibili, non page-builder libero
+- **Home curata:** progetti in evidenza scelti manualmente
+- **Filtri portfolio:** applicati lato client (dataset limitato)
+- **Progetti correlati:** calcolo automatico basato su tag/skills
+- **Design tokens:** colori e font da `siteSettings` convertiti in CSS variables
+- **Draft/Publish:** workflow editoriale nativo con preview
+- **ISR:** webhook Sanity -> invalidazione pagine Next.js
+
+## Webhook revalidate
+
+- `POST /api/revalidate` con header `x-revalidate-secret`
+- il valore deve coincidere con `REVALIDATE_SECRET`
+
+## Deploy
+
+Frontend su Vercel.
+
+Sanity Studio:
+1. `pnpm --filter @portfolio/studio exec sanity login`
+2. `pnpm --filter @portfolio/studio exec sanity deploy --hostname eleonorairaci`
+
+Nota: il valore `studioHost` è definito in `apps/studio/sanity.cli.ts` per evitare prompt al deploy.
+
+## Note operative
+
+- La config ESLint in `apps/web` estende solo `next/core-web-vitals` per compatibilita build su Vercel.
+- Lo Studio usa ESLint flat config in `apps/studio/eslint.config.js` (ESLint v9).
+- L'helper immagini Sanity usa il tipo inferito dal builder per compatibilita tra versioni.
+- Se nel webhook Sanity puoi scegliere solo `v2021-03-25` o `v2025-02-19`, usa `v2025-02-19` e allinea lo stesso valore nelle env.
