@@ -199,6 +199,10 @@ Il target non influisce direttamente sull’implementazione tecnica, ma guida tu
 3. `cp apps/studio/.env.example apps/studio/.env`
 4. `pnpm dev` (frontend) e `pnpm studio:dev` (CMS)
 
+Nota: nel file `apps/studio/.env` valorizza anche `SANITY_STUDIO_PROJECT_ID` e
+`SANITY_STUDIO_DATASET` (prefisso richiesto per esporre le variabili al build
+dello Studio).
+
 Nota: i file `.env` e `.env.local` non si committano; usa i `.env.example` per condividere i valori base.
 Nota: la config ESLint in `apps/web` estende solo `next/core-web-vitals` per compatibilita build su Vercel.
 Nota: l'helper immagini Sanity usa il tipo inferito dal builder per compatibilita tra versioni.
@@ -230,5 +234,7 @@ Frontend (`apps/web/.env.local`):
 
 Studio (`apps/studio/.env`):
 - `SANITY_PROJECT_ID`
+- `SANITY_STUDIO_PROJECT_ID` (uguale a `SANITY_PROJECT_ID`)
 - `SANITY_DATASET`
+- `SANITY_STUDIO_DATASET` (uguale a `SANITY_DATASET`)
 - `SANITY_API_VERSION`

@@ -6,8 +6,10 @@ import { structure } from './deskStructure'
 import { schemaTypes } from './schemaTypes'
 import { singletonTypes } from './schemaTypes/singletons'
 
-const projectId = process.env.SANITY_PROJECT_ID || ''
-const dataset = process.env.SANITY_DATASET || 'production'
+const projectId =
+  process.env.SANITY_STUDIO_PROJECT_ID || process.env.SANITY_PROJECT_ID || ''
+const dataset =
+  process.env.SANITY_STUDIO_DATASET || process.env.SANITY_DATASET || 'production'
 const apiVersion = process.env.SANITY_API_VERSION || '2024-01-01'
 
 export default defineConfig({
