@@ -39,6 +39,7 @@ Obiettivi principali:
 ## Linee guida di sviluppo
 
 - Regole e coerenza del progetto in `AGENTS.md`.
+- Mantieni `AGENTS.md` aggiornato quando cambiano le direttive operative.
 
 ## Requisiti
 

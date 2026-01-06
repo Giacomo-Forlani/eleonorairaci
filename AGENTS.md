@@ -14,6 +14,7 @@ Repository pnpm workspace con due app:
 - Usa pnpm (no npm/yarn) ed esegui i comandi dalla root del repo.
 - Cambiamenti minimi, rispettando la strictness TypeScript esistente.
 - Aggiorna sempre `README.md` ad ogni modifica del progetto.
+- Aggiorna `AGENTS.md` quando cambiano le direttive per mantenerle allineate al progetto.
 
 ## Struttura
 - Frontend in `apps/web/src`.
