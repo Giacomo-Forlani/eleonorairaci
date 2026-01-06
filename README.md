@@ -13,7 +13,7 @@ Le scelte architetturali e funzionali adottate sono elencate e motivate di segui
 ## Stack tecnologico
 
 - **Frontend:** Next.js (App Router) + TypeScript  
-- **CMS:** Sanity (Content Lake + Studio)  
+- **CMS:** Sanity Studio v3 (Content Lake + Studio)  
 - **Styling:** Tailwind CSS + CSS Variables  
 - **Hosting frontend:** Vercel  
 - **Hosting CMS:** Sanity.io  
